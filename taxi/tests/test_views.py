@@ -16,7 +16,8 @@ class TestIndex(TestCase):
 
 class TestDiverListPagination(TestCase):
     def setUp(self):
-        self.user = get_user_model().objects.create_user(username="admin.user", password="1qazcde3")
+        self.user = get_user_model().objects.create_user(
+            username="admin.user", password="1qazcde3")
         self.client.login(username="admin.user", password="1qazcde3")
 
         for i in range(5):
@@ -33,7 +34,8 @@ class TestDiverListPagination(TestCase):
 
         self.assertEqual(len(response.context["driver_list"]), 5)
 
-        response_page_2 = self.client.get(reverse("taxi:driver-list") + "?page=2")
+        response_page_2 = self.client.get(reverse(
+            "taxi:driver-list") + "?page=2")
         self.assertEqual(len(response_page_2.context["driver_list"]), 1)
 
 
@@ -43,7 +45,9 @@ class TestQueryset(TestCase):
             username="admin.user", password="1qazcde3"
         )
         self.client.login(username="admin.user", password="1qazcde3")
-        self.manufacturer = Manufacturer.objects.create(name="CAR", country="Germany")
+        self.manufacturer = Manufacturer.objects.create(
+            name="CAR"
+            , country="Germany")
         Car.objects.create(model="BMW", manufacturer=self.manufacturer)
         Car.objects.create(model="Mercedes", manufacturer=self.manufacturer)
 

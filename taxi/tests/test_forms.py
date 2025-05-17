@@ -70,9 +70,16 @@ class ManufacturersSearchFormTests(TestCase):
 
 class CarFormTests(TestCase):
     def setUp(self):
-        self.manufacturer = Manufacturer.objects.create(name="BMW", country="Germany")
-        self.driver1 = get_user_model().objects.create_user(username="d1", license_number="ABC12345", password="test")
-        self.driver2 = get_user_model().objects.create_user(username="d2", license_number="XYZ67890", password="test")
+        self.manufacturer = Manufacturer.objects.create(
+            name="BMW",
+            country="Germany"
+        )
+        self.driver1 = get_user_model().objects.create_user(
+            username="d1", license_number="ABC12345", password="test"
+        )
+        self.driver2 = get_user_model().objects.create_user(
+            username="d2", license_number="XYZ67890", password="test"
+        )
 
     def test_car_form_valid(self):
         form_data = {

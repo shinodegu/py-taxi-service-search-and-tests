@@ -7,8 +7,12 @@ from taxi.models import Manufacturer, Driver, Car
 
 class ManufacturerModelTests(TestCase):
     def test_manufacturer_str(self):
-        test_manufacturer = Manufacturer.objects.create(name="test_manufacturer", country="test_country")
-        self.assertEqual(str(test_manufacturer), f"{test_manufacturer.name} {test_manufacturer.country}")
+        test_manufacturer = Manufacturer.objects.create(
+            name="test_manufacturer", country="test_country"
+        )
+        self.assertEqual(
+            str(test_manufacturer),
+            f"{test_manufacturer.name} {test_manufacturer.country}")
 
     def test_manufacturer_name(self):
         man_name = "test_manufacturer"
@@ -18,8 +22,15 @@ class ManufacturerModelTests(TestCase):
 
 class DriverModelTests(TestCase):
     def test_driver_str(self):
-        test_driver = Driver.objects.create(username="test_driver", first_name="test_first_name", last_name="test_last_name")
-        self.assertEqual(str(test_driver), f"{test_driver.username} ({test_driver.first_name} {test_driver.last_name})")
+        test_driver = Driver.objects.create(
+            username="test_driver",
+            first_name="test_first_name",
+            last_name="test_last_name")
+        self.assertEqual(
+            str(test_driver),
+            f"{test_driver.username}"
+            f" ({test_driver.first_name} {test_driver.last_name})"
+        )
 
     def test_get_absolute_url(self):
         driver = get_user_model().objects.create_user(
@@ -35,9 +46,15 @@ class DriverModelTests(TestCase):
 
 class CarModelTests(TestCase):
     def test_car_drivers(self):
-        test_driver1 = Driver.objects.create(username="test_driver1", license_number="ABC12345")
-        test_driver2 = Driver.objects.create(username="test_driver2", license_number="ZXC12345")
-        test_manufacturer = Manufacturer.objects.create(name="test_manufacturer", country="test_country")
+        test_driver1 = Driver.objects.create(
+            username="test_driver1",
+            license_number="ABC12345")
+        test_driver2 = Driver.objects.create(
+            username="test_driver2",
+            license_number="ZXC12345")
+        test_manufacturer = Manufacturer.objects.create(
+            name="test_manufacturer",
+            country="test_country")
 
         car = Car.objects.create(model="BMW", manufacturer=test_manufacturer)
 
