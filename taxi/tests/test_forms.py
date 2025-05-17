@@ -9,7 +9,7 @@ from taxi.forms import (
     ManufacturersSearchForm,
     CarForm
 )
-from taxi.models import Driver, Manufacturer, Car
+from taxi.models import Manufacturer
 
 
 class DriverCreationFormTests(TestCase):
